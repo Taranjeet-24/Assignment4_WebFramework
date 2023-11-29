@@ -1,0 +1,48 @@
+{{> header}}
+    <h1>Add New Car Invoice</h1>
+    <form action="/invoices" method="POST">
+        <label for="InvoiceNo">Invoice Number:</label>
+        <input type="text" id="InvoiceNo" name="InvoiceNo" required><br>
+
+        <label for="Manufacturer">Manufacturer:</label>
+        <input type="text" id="Manufacturer" name="Manufacturer" required><br>
+
+        <label for="class">Class:</label>
+        <select id="class" name="class" required>
+            <option value="">--Select a Class--</option>
+            <option value="Economy">Economy</option>
+            <option value="Compact">Compact</option>
+            <option value="Mid-size">Mid-size</option>
+            <option value="Full-size">Full-size</option>
+            <option value="Luxury">Luxury</option>
+            <option value="Sports">Sports</option>
+            <option value="SUV">SUV</option>
+            <option value="Minivan">Minivan</option>
+            <option value="Other">Other</option>
+        </select><br>
+
+        <label for="Sales_in_thousands">Sales in Thousands:</label>
+        <input type="number" id="Sales_in_thousands" name="Sales_in_thousands" step="any" required><br>
+
+        <label for="__year_resale_value">Year Resale Value:</label>
+        <input type="number" id="__year_resale_value" name="__year_resale_value" step="any" required><br>
+
+        <label for="Vehicle_type">Vehicle Type:</label>
+        <select id="Vehicle_type" name="Vehicle_type" required>
+            <option value="">--Select a Vehicle Type--</option>
+            <option value="Passenger">Passenger Vehicle</option>
+            <option value="Military">Military Vehicle</option>
+        </select><br>
+
+
+        <label for="Price_in_thousands">Price in Thousands:</label>
+        <input type="number" id="Price_in_thousands" name="Price_in_thousands" step="any" required><br>
+
+        <label for="Latest_Launch">Latest Launch (Date):</label>
+        <input type="date" id="Latest_Launch" name="Latest_Launch" required><br>
+
+        <label for="Power_perf_factor">Power Performance Factor:</label>
+        <input type="number" id="Power_perf_factor" name="Power_perf_factor" step="any" required><br>
+
+        <button type="submit">Add Invoice</button>
+   

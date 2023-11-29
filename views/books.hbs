@@ -1,0 +1,46 @@
+
+    <h1>All Books</h1>
+
+    <!-- Books Table -->
+    <table>
+        <thead>
+            <tr>
+                <th>Image</th>
+                <th>ISBN</th>
+                <th>Title</th>
+                <th>Author</th>
+                <th>Inventory</th>
+                <th>Category</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each books}}
+            <tr>
+                <td><img src="{{this.img}}" alt="{{this.title}}"></td>
+                <td>{{this.ISBN}}</td>
+                <td>{{this.title}}</td>
+                <td>{{this.author}}</td>
+                <td>{{this.inventory}}</td>
+                <td>{{this.category}}</td>
+            </tr>
+            {{else}}
+            <tr>
+                <td colspan="6">No books found.</td>
+            </tr>
+            {{/each}}
+        </tbody>
+    </table>
+
+    <!-- Pagination Controls -->
+    <div>
+        {{#if books.length}}
+            {{#if gt page 1}}
+                <a href="/books/allBooks?page={{math page "-" 1}}&limit={{limit}}">Previous</a>
+            {{/if}}
+            <span>Page {{page}}</span>
+            {{#if books.length limit}}
+                <a href="/books/allBooks?page={{math page "+" 1}}&limit={{limit}}">Next</a>
+            {{/if}}
+        {{/if}}
+    </div>
+

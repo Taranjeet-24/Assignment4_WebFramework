@@ -1,0 +1,17 @@
+ <h1>Car Details</h1>
+    <div>
+        <!-- Display car details here -->
+        <p>Manufacturer: {{car.Manufacturer}}</p>
+        <!-- Add other car details -->
+
+        <!-- Button to trigger update form -->
+        <form action="/api/invoices/update/{{car._id}}" method="GET">
+            <button type="submit">Edit</button>
+        </form>
+
+        <!-- Button to trigger delete action -->
+        <form action="/api/invoices/delete/{{car._id}}" method="POST">
+            <input type="hidden" name="_method" value="DELETE">
+            <button type="submit">Delete</button>
+        </form>
+    </div>

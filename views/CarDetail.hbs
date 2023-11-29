@@ -1,0 +1,86 @@
+
+    <script>
+        function toggleEditMode() {
+            var form = document.getElementById('editCarForm');
+            var elements = form.elements;
+            var isReadOnly = elements[0].readOnly; // Checking the state using the first input field
+
+            for (var i = 0; i < elements.length; i++) {
+                if (elements[i].type !== 'submit' && elements[i].type !== 'button') {
+                    elements[i].readOnly = !isReadOnly; // Toggle readOnly state
+                    if (elements[i].type === 'checkbox') {
+                        elements[i].disabled = !isReadOnly; // Toggle disabled state for checkboxes
+                    }
+                }
+            }
+
+            document.getElementById('updateButton').style.display = isReadOnly ? 'none' : 'block';
+            document.getElementById('saveButton').style.display = isReadOnly ? 'block' : 'none';
+        }
+    </script>
+
+    {{> header}}
+
+    <h1>Edit Car Details</h1>
+    <form id="editCarForm" action="/update/{{car.InvoiceNo}}" method="POST">
+        <input type="hidden" name="_method" value="PUT">
+
+        <label for="InvoiceNo">Invoice Number:</label>
+        <input type="text" id="InvoiceNo" name="InvoiceNo" value="{{car.InvoiceNo}}" readonly><br>
+
+        <label for="Manufacturer">Manufacturer:</label>
+        <input type="text" id="Manufacturer" name="Manufacturer" value="{{car.Manufacturer}}" readonly><br>
+
+        <label for="class">Class:</label>
+        <input type="text" id="class" name="class" value="{{car.class}}" readonly><br>
+
+        <label for="Sales_in_thousands">Sales in Thousands:</label>
+        <input type="number" id="Sales_in_thousands" name="Sales_in_thousands" value="{{car.Sales_in_thousands}}" readonly><br>
+
+        <label for="__year_resale_value">Year Resale Value:</label>
+        <input type="number" id="__year_resale_value" name="__year_resale_value" value="{{car.__year_resale_value}}" readonly><br>
+
+        <label for="Vehicle_type">Vehicle Type:</label>
+        <input type="text" id="Vehicle_type" name="Vehicle_type" value="{{car.Vehicle_type}}" readonly><br>
+
+        <label for="Price_in_thousands">Price in Thousands:</label>
+        <input type="number" id="Price_in_thousands" name="Price_in_thousands" value="{{car.Price_in_thousands}}" readonly><br>
+
+        <label for="Engine_size">Engine Size:</label>
+        <input type="number" id="Engine_size" name="Engine_size" value="{{car.Engine_size}}" readonly><br>
+
+        <label for="Horsepower">Horsepower:</label>
+        <input type="number" id="Horsepower" name="Horsepower" value="{{car.Horsepower}}" readonly><br>
+
+        <label for="Wheelbase">Wheelbase:</label>
+        <input type="number" id="Wheelbase" name="Wheelbase" value="{{car.Wheelbase}}" readonly><br>
+
+        <label for="Width">Width:</label>
+        <input type="number" id="Width" name="Width" value="{{car.Width}}" readonly><br>
+
+        <label for="Length">Length:</label>
+        <input type="number" id="Length" name="Length" value="{{car.Length}}" readonly><br>
+
+        <label for="Curb_weight">Curb Weight:</label>
+        <input type="number" id="Curb_weight" name="Curb_weight" value="{{car.Curb_weight}}" readonly><br>
+
+        <label for="Fuel_capacity">Fuel Capacity:</label>
+        <input type="number" id="Fuel_capacity" name="Fuel_capacity" value="{{car.Fuel_capacity}}" readonly><br>
+
+        <label for="Fuel_efficiency">Fuel Efficiency:</label>
+        <input type="number" id="Fuel_efficiency" name="Fuel_efficiency" value="{{car.Fuel_efficiency}}" readonly><br>
+
+        <label for="Latest_Launch">Latest Launch:</label>
+        <input type="date" id="Latest_Launch" name="Latest_Launch" value="{{formatDate car.Latest_Launch}}" readonly><br>
+
+        <label for="Power_perf_factor">Power Performance Factor:</label>
+        <input type="number" id="Power_perf_factor" name="Power_perf_factor" value="{{car.Power_perf_factor}}" readonly><br>
+
+        <label for="isElectric">Is Electric:</label>
+        <input type="checkbox" id="isElectric" name="isElectric" {{#if car.isElectric}}checked{{/if}} disabled><br>
+
+        <button type="button" id="updateButton" onclick="toggleEditMode()">Update</button>
+        <button type="submit" id="saveButton" style="display:none;">Save Changes</button>
+    </form>
+</body>
+</html>
