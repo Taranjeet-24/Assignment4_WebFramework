@@ -47,5 +47,5 @@ app.use(express.static(path.join(__dirname, 'public')));
 // Use invoice routes
 app.use('/', invoiceRoutes); // Verify if this route setup is correct as per your requirement
 
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
